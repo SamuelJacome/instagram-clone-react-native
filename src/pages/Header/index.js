@@ -7,7 +7,7 @@ export default class Header extends Component {
   render() {
     return (
     
-        <View style = {styles.constainer}>
+       
 
         <View style = {styles.header}>
           <TouchableOpacity>
@@ -19,14 +19,14 @@ export default class Header extends Component {
         </View>
 
 
-      </View>
+
+
+ 
     );
   }
 }
 const styles = StyleSheet.create({
-  constainer:{
-    flex: 1,
-  },
+
   header:{
     height: 55,
     backgroundColor: '#FFF',

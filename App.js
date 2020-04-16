@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { View, Text, Image, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
 
 import Header from './src/pages/Header'
+import Feed from './src/pages/Feed'
 export default class clone_insta extends Component {
   constructor(props){
     super(props);
@@ -64,7 +65,13 @@ export default class clone_insta extends Component {
 
        <Header/>
 
+        <FlatList
+          showsVerticalScrollIndicator = {false}
+          keyExtractor = {(item) => item.id}
+          data = {this.state.feed}
+          renderItem = {({item})=> <Feed data={item}/>} 
 
+        />
       </View>
     );
   }
@@ -73,24 +80,5 @@ const styles = StyleSheet.create({
   constainer:{
     flex: 1,
   },
-  header:{
-    height: 55,
-    backgroundColor: '#FFF',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 5,
 
-    borderBottomWidth: 0.2,
-    shadowColor: '#000',
-    elevation: 1,
-  },
-
-  logo:{
-
-  },
-  send:{
-    width: 23,
-    height: 23
-  }
 })
