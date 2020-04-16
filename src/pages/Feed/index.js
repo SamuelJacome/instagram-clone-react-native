@@ -31,7 +31,38 @@ export default class Feed extends Component {
             source = {{uri: this.state.feed.imgPublicacao}}
             resizeMode='cover'
             />
+
+            <View style = {styles.areaBtn}>
+            <TouchableOpacity>
+                <Image source={require('./../../assets/like.png')} style = {styles.iconeLike}/>
+
+            </TouchableOpacity>
+
+            <TouchableOpacity style = {styles.btnSend}>
+                <Image source={require('./../../assets/send.png') } style = {styles.iconeLike}/>
+            </TouchableOpacity>
         </View>
+
+        <View style = {styles.ViewRodape}>
+            <Text style = {styles.nomeRodape}> {this.state.feed.nome}</Text>
+
+            <Text>{this.state.feed.descricao}</Text>
+
+
+
+        </View>
+
+        
+
+
+
+
+
+
+
+        </View>
+
+       
 
         
     
@@ -69,5 +100,33 @@ const styles =StyleSheet.create({
         flex: 1,
         height: 400,
         alignItems: 'center',
+    },
+    areaBtn:{
+        flexDirection: 'row',
+        padding: 5,
+    },
+    iconeLike:{
+        width: 33,
+        height: 33,
+    },
+    btnSend:{
+        paddingLeft: 5,
+    },
+
+    ViewRodape:{
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    descRodape:{
+        paddingLeft: 5,
+        fontSize: 15,
+        color: '#000',
+    },
+
+    nomeRodape:{
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#000',
+        paddingLeft: 5,
     }
 })
