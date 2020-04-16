@@ -1,114 +1,96 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import React, { Component } from 'react';
 
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import { View, Text, Image, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import Header from './src/pages/Header'
+export default class clone_insta extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      feed: [
+        {
+          id: '1', 
+          nome: 'Lucas Silva', 
+          descricao: 'Mais um dia de muitos bugs :)', 
+          imgperfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil1.png', 
+          imgPublicacao: 'https://sujeitoprogramador.com/instareact/foto1.png',  
+          likeada: false, 
+          likers: 0
+         },
+        {
+          id: '2', 
+          nome: 'Matheus', 
+          descricao: 'Isso sim é ser raiz!!!!!', 
+          imgperfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil2.png', 
+          imgPublicacao: 'https://sujeitoprogramador.com/instareact/foto2.png', 
+          likeada: false, 
+          likers: 0
+        },
+        {
+          id: '3', 
+          nome: 'Jose Augusto', 
+          descricao: 'Bora trabalhar Haha', 
+          imgperfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil3.png', 
+          imgPublicacao: 'https://sujeitoprogramador.com/instareact/foto3.png',  
+          likeada: false, 
+          likers: 3
+        },
+        {
+          id: '4', 
+          nome: 'Gustavo Henrique', 
+          descricao: 'Isso sim que é TI!', 
+          imgperfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil1.png', 
+          imgPublicacao: 'https://sujeitoprogramador.com/instareact/foto4.png', 
+          likeada: false, 
+          likers: 1
+        },
+        {
+          id: '5', 
+          nome: 'Guilherme', 
+          descricao: 'Boa tarde galera do insta...', 
+          imgperfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil2.png', 
+          imgPublicacao: 'https://sujeitoprogramador.com/instareact/foto5.png',
+          likeada: false, 
+          likers: 32
+        }
+      ]
+    };
+  }
+  
+  
+  render() {
+    return (
+      <View style = {styles.constainer}>
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+       <Header/>
 
+
+      </View>
+    );
+  }
+}
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+  constainer:{
+    flex: 1,
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
+  header:{
+    height: 55,
+    backgroundColor: '#FFF',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 5,
 
-export default App;
+    borderBottomWidth: 0.2,
+    shadowColor: '#000',
+    elevation: 1,
+  },
+
+  logo:{
+
+  },
+  send:{
+    width: 23,
+    height: 23
+  }
+})
