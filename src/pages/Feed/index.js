@@ -10,6 +10,50 @@ export default class Feed extends Component {
         this.state = {
             feed: this.props.data,
         }
+        this.mostraLikes = this.mostraLikes.bind(this);
+        this.like = this.like.bind(this);
+   
+        this.carregaIcon = this.carregaIcon.bind(this);
+
+    }
+
+    carregaIcon(likeada){
+        return likeada ? require('./../../assets/likeada.png') : require('./../../assets/like.png') 
+    }
+
+    like(){
+        let feed = this.state.feed;
+
+        if(feed.likeada === true){
+            this.setState({
+                feed:{
+                    ...feed,
+                    likeada: false,
+                    likers: feed.likers -1,
+                }
+            })
+        }else{
+            this.setState({
+                feed:{
+                    ...feed,
+                    likeada: true,
+                    likers: feed.likers +1,
+                }
+            })
+        }
+    }
+
+    mostraLikes(likers){
+        let feed = this.state.feed;
+
+        if(feed.likers <=0){
+            return
+        }
+
+        return(
+            <Text style = {styles.likers}>{feed.likers} {feed.likers >1 ? 'curtidas' : 'curtida'}</Text>
+        )
+
     }
 
   render() {
@@ -33,8 +77,8 @@ export default class Feed extends Component {
             />
 
             <View style = {styles.areaBtn}>
-            <TouchableOpacity>
-                <Image source={require('./../../assets/like.png')} style = {styles.iconeLike}/>
+            <TouchableOpacity onPress={this.like}>
+                <Image source={this.carregaIcon(this.state.feed.likeada)} style = {styles.iconeLike}/>
 
             </TouchableOpacity>
 
@@ -43,10 +87,12 @@ export default class Feed extends Component {
             </TouchableOpacity>
         </View>
 
+        <Text> {this.mostraLikes(this.state.feed.likers)}</Text>
+
         <View style = {styles.ViewRodape}>
             <Text style = {styles.nomeRodape}> {this.state.feed.nome}</Text>
 
-            <Text>{this.state.feed.descricao}</Text>
+            <Text>  {this.state.feed.descricao}</Text>
 
 
 
@@ -128,5 +174,10 @@ const styles =StyleSheet.create({
         fontWeight: 'bold',
         color: '#000',
         paddingLeft: 5,
+    },
+
+    likers:{
+        fontWeight: 'bold',
+        marginLeft: 5,
     }
 })
